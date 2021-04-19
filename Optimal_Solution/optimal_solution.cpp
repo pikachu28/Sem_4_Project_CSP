@@ -66,37 +66,37 @@ int HD(vector<int> x, vector<int> y){
     d = max(m - sum(x), m-sum(y));
     return d;
 }
-void CSP_2(vector<int> s, vector<vector<int>> S, int d){
-    // n-> No of strings, m=length of strings
-    int m = s.size();
-    int mn=m, mx=-1;
-    int n=S.size();
-    for(int i=0; i<n; i++){
-        mx=-1;
-        for(int j=0; j!=i && j<n; j++){
-            mx = max(mx, HD(S[i], S[j]));
-        }
-        if(mx!=-1 && mx<mn){
-            s=S[i];
-            d=mx;
-            mn=mx;
-        }
-    }
-    cout<<"Closest String is ";
-    for(int i=0; i<s.size(); i++){
-        cout<<s[i]<<" ";
-    }
-    cout<<endl<<"Hamming distance: "<<d;
-}
+// void CSP_2(vector<int> s, vector<vector<int>> S, int d){
+//     // n-> No of strings, m=length of strings
+//     int m = s.size();
+//     int mn=m, mx=-1;
+//     int n=S.size();
+//     for(int i=0; i<n; i++){
+//         mx=-1;
+//         for(int j=0; j!=i && j<n; j++){
+//             mx = max(mx, HD(S[i], S[j]));
+//         }
+//         if(mx!=-1 && mx<mn){
+//             s=S[i];
+//             d=mx;
+//             mn=mx;
+//         }
+//     }
+//     cout<<"Closest String is ";
+//     for(int i=0; i<s.size(); i++){
+//         cout<<s[i]<<" ";
+//     }
+//     cout<<endl<<"Hamming distance: "<<d;
+// }
 int main(){
     // example given in Research paper
     vector<string> V {"differ", "median", "length", "medium"};
     vector<vector<int>> S;
     S = mapping(V);
     // cout<<S[0][1];
-    int d=0;
-    d = CSP(S);
-    cout<<"Max Hamming Distance b/w all the strings: "<<d<<endl;
+//     int d=0;
+//     d = CSP(S);
+//     cout<<"Max Hamming Distance b/w all the strings: "<<d<<endl;
     // lets say S[0] is the closet string
     // finding the optimal answer i.e closet string among all the string
     CSP_2(S[0], S, d);
