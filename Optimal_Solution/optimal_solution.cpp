@@ -24,30 +24,30 @@ vector<vector<int>> mapping(vector<string> V){
     return ans;
 }
 
-int CSP(vector<vector<int>> S){
-    // n-> No of strings, m=length of strings
-    int m=S[0].size()-1, n=S.size();
-    int mx=-1, i=-1;
-    for(int c=0; c<=m; c++){
-        mx = -1;
-        i = 1;
-        for(int r=0; r<n; r++){
-            if(S[r][c]>mx) {
-                mx = S[r][c];
-                i=r;
-            }
-        }
-        for(int r=0; r<n; r++){
-            S[r][c]=0;
-        }
-        S[i][c] = 1;
-    }
-    int d=-100;
-    for(int r=0; r<n; r++){
-    d = max(m - sum(S[r]), d);
-    }
-    return d;
-}
+// int CSP(vector<vector<int>> S){
+//     // n-> No of strings, m=length of strings
+//     int m=S[0].size()-1, n=S.size();
+//     int mx=-1, i=-1;
+//     for(int c=0; c<=m; c++){
+//         mx = -1;
+//         i = 1;
+//         for(int r=0; r<n; r++){
+//             if(S[r][c]>mx) {
+//                 mx = S[r][c];
+//                 i=r;
+//             }
+//         }
+//         for(int r=0; r<n; r++){
+//             S[r][c]=0;
+//         }
+//         S[i][c] = 1;
+//     }
+//     int d=-100;
+//     for(int r=0; r<n; r++){
+//     d = max(m - sum(S[r]), d);
+//     }
+//     return d;
+// }
 // calculating Hamming Distance b/w 2 strings which mapped to integer values
 int HD(vector<int> x, vector<int> y){
     // n-> No of strings, m=length of strings
@@ -66,28 +66,28 @@ int HD(vector<int> x, vector<int> y){
     d = max(m - sum(x), m-sum(y));
     return d;
 }
-// void CSP_2(vector<int> s, vector<vector<int>> S, int d){
-//     // n-> No of strings, m=length of strings
-//     int m = s.size();
-//     int mn=m, mx=-1;
-//     int n=S.size();
-//     for(int i=0; i<n; i++){
-//         mx=-1;
-//         for(int j=0; j!=i && j<n; j++){
-//             mx = max(mx, HD(S[i], S[j]));
-//         }
-//         if(mx!=-1 && mx<mn){
-//             s=S[i];
-//             d=mx;
-//             mn=mx;
-//         }
-//     }
-//     cout<<"Closest String is ";
-//     for(int i=0; i<s.size(); i++){
-//         cout<<s[i]<<" ";
-//     }
-//     cout<<endl<<"Hamming distance: "<<d;
-// }
+void CSP_2(vector<int> s, vector<vector<int>> S, int d){
+    // n-> No of strings, m=length of strings
+    int m = s.size();
+    int mn=m, mx=-1;
+    int n=S.size();
+    for(int i=0; i<n; i++){
+        mx=-1;
+        for(int j=0; j!=i && j<n; j++){
+            mx = max(mx, HD(S[i], S[j]));
+        }
+        if(mx!=-1 && mx<mn){
+            s=S[i];
+            d=mx;
+            mn=mx;
+        }
+    }
+    cout<<"Closest String is ";
+    for(int i=0; i<s.size(); i++){
+        cout<<s[i]<<" ";
+    }
+    cout<<endl<<"Hamming distance: "<<d;
+}
 int main(){
     // example given in Research paper
     vector<string> V {"differ", "median", "length", "medium"};
