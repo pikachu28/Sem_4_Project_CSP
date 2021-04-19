@@ -94,8 +94,8 @@ int main(){
     vector<vector<int>> S;
     S = mapping(V);
     // cout<<S[0][1];
-//     int d=0;
-//     d = CSP(S);
+    int d=0;
+    d = CSP(S);
 //     cout<<"Max Hamming Distance b/w all the strings: "<<d<<endl;
     // lets say S[0] is the closet string
     // finding the optimal answer i.e closet string among all the string
