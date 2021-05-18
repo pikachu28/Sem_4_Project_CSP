@@ -24,6 +24,7 @@ vector<vector<int>> mapping(vector<string> V){
     return ans;
 }
 
+// Max Hamming Distance b/w all the strings
 int CSP(vector<vector<int>> S){
     // n-> No of strings, m=length of strings
     int m=S[0].size()-1, n=S.size();
@@ -45,10 +46,14 @@ int CSP(vector<vector<int>> S){
     int d=-100;
     for(int r=0; r<n; r++){
     d = max(m - sum(S[r]), d);
+    // if(d==4){
+    //     for(int i=0; i<=m; i++)
+    //     cout<<S[r][i];
+    // }
     }
     return d;
 }
-// calculating Hamming Distance b/w 2 strings which mapped to integer values
+// calculating min Hamming Distance b/w 2 strings which mapped to integer values
 int HD(vector<int> x, vector<int> y){
     // n-> No of strings, m=length of strings
     int m=x.size()-1;
@@ -66,6 +71,8 @@ int HD(vector<int> x, vector<int> y){
     d = max(m - sum(x), m-sum(y));
     return d;
 }
+
+// Max of min Hamming distance b/w all the strings
 void CSP_2(vector<int> s, vector<vector<int>> S, int d){
     // n-> No of strings, m=length of strings
     int m = s.size();
@@ -82,11 +89,11 @@ void CSP_2(vector<int> s, vector<vector<int>> S, int d){
             mn=mx;
         }
     }
-    cout<<"Closest String is ";
+    cout<<"Closest Strings is ";
     for(int i=0; i<s.size(); i++){
         cout<<s[i]<<" ";
     }
-    cout<<endl<<"Hamming distance: "<<d;
+    cout<<endl<<"Max of min Hamming distance b/w all the strings: "<<d;
 }
 int main(){
     // example given in Research paper
@@ -96,7 +103,7 @@ int main(){
     // cout<<S[0][1];
     int d=0;
     d = CSP(S);
-//     cout<<"Max Hamming Distance b/w all the strings: "<<d<<endl;
+    cout<<"Max Hamming Distance b/w all the strings: "<<d<<endl;
     // lets say S[0] is the closet string
     // finding the optimal answer i.e closet string among all the string
     CSP_2(S[0], S, d);
